@@ -1,0 +1,84 @@
+.container {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 20px;
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  background-color: #f8f9fa;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+h2 { color: #2c3e50; margin-bottom: 5px; }
+.subtitle { color: #7f8c8d; margin-bottom: 25px; }
+
+.workspace {
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.control-panel, .visualization-panel {
+  flex: 1;
+  min-width: 300px;
+}
+
+textarea {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid #bdc3c7;
+  border-radius: 8px;
+  font-family: monospace;
+  font-size: 16px;
+  resize: none;
+  box-sizing: border-box;
+}
+
+button {
+  width: 100%;
+  margin-top: 15px;
+  padding: 12px;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+button:hover { background-color: #2980b9; }
+
+.matrix-grid {
+  display: grid;
+  gap: 5px;
+  margin: 20px 0;
+  justify-content: center;
+}
+
+.matrix-cell {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  background: white;
+}
+
+.matrix-cell[data-base="A"] { background-color: #ffeaa7; color: #d63031; }
+.matrix-cell[data-base="T"] { background-color: #fab1a0; color: #2d3436; }
+.matrix-cell[data-base="C"] { background-color: #74b9ff; color: #0984e3; }
+.matrix-cell[data-base="G"] { background-color: #55efc4; color: #00b894; }
+
+.result-alert {
+  padding: 15px;
+  border-radius: 8px;
+  text-align: center;
+  margin-top: 20px;
+  font-size: 18px;
+}
+.result-alert.mutant { background-color: #ff8787; color: #c92a2a; border: 1px solid #c92a2a; }
+.result-alert.human { background-color: #b2f2bb; color: #2b8a3e; border: 1px solid #2b8a3e; }
+.result-alert.error { background-color: #ffec99; color: #e67e22; border: 1px solid #e67e22; }

@@ -1,0 +1,40 @@
+<div class="container">
+  <h2>DETECTOR DE MUTANTES</h2>
+  <p class="subtitle">Ingrese las secuencias de bases nitrogenadas (A, T, C, G) separadas por comas o saltos de línea.</p>
+
+  <div class="workspace">
+    <div class="control-panel">
+      <label for="dnaInput">Secuencia de ADN (NxN):</label>
+      <textarea 
+        id="dnaInput" 
+        rows="8" 
+        [(ngModel)]="rawDnaInput" 
+        (input)="updateMatrixView()"
+        placeholder="Ejemplo:&#10;ATGCGA&#10;CAGTGC&#10;TTATGT...">
+      </textarea>
+      
+      <button (click)="validateDna()">Analizar ADN</button>
+    </div>
+
+    <div class="visualization-panel">
+      <h3>Visualización de la Matriz</h3>
+      
+      <div *ngIf="dnaMatrix.length > 0" class="matrix-grid" [style.grid-template-columns]="'repeat(' + dnaMatrix.length + ', 40px)'">
+        <ng-container *ngFor="let row of dnaMatrix">
+          <div *ngFor="let cell of row" class="matrix-cell" [attr.data-base]="cell">
+            {{ cell }}
+          </div>
+        </ng-container>
+      </div>
+
+      <div *ngIf="isMutantResult !== null" class="result-alert" [ngClass]="isMutantResult ? 'mutant' : 'human'">
+        <strong *ngIf="isMutantResult">🧬 ¡MUTANTE DETECTADO!</strong>
+        <strong *ngIf="!isMutantResult">👤 HUMANO SANO</strong>
+      </div>
+
+      <div *ngIf="errorMessage" class="result-alert error">
+        ⚠️ {{ errorMessage }}
+      </div>
+    </div>
+  </div>
+</div>
